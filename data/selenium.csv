@@ -1,1 +1,3 @@
-
+cmd,param_1
+navigate_to,http://www.voterfind.com/allenoh/avreport.aspx
+click,rdo_file
