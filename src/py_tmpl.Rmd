@@ -1,0 +1,27 @@
+---
+title: "analysis_6166"
+author: "Dan Maxwell"
+date: "April 24, 2017"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. In addition to R, you can embed a Python code chunk like this:
+
+```{python, engine.path="/Users/danielmaxwell/AppData/Local/Programs/Python/Python35/python.exe"}
+
+x = 'Hello, Python World!'
+
+print(x.split(' '))
+
+```
+With Python, you need to set the engine.path variable.  RStudio documentation indicates that you can use the Python engine in a code snippet by referencing the interpreter like this: {python}.  However, this only works if python.exe is in the Windows PATH variable, in a location accessible to RStudio.  The path, of course, is unique to each computer.
