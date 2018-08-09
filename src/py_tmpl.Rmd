@@ -1,27 +1,47 @@
 ---
-title: "analysis_6166"
+title: "Python and RStudio"
 author: "Dan Maxwell"
-date: "April 24, 2017"
+date: "August 9, 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+knitr::knit_engines$set(python = reticulate::eng_python)
 ```
 
-## R Markdown
+## Python in RMarkdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+RStudio documentation indicates that you can use the Python engine in a code snippet by referencing the interpreter like this: {python}.  However, this only works if python.exe is in the Windows PATH variable, in a location accessible to RStudio.  In the case of most Anaconda installations, the path to the python.exe is c:/ProgramData/Anaconda3.  Add this to the path variable by right-clicking on Computer and then click Properties.  Click Advanced system settings and then the Environment Variables button.  And finally, select PATH and click the Edit button.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. In addition to R, you can embed a Python code chunk like this:
+See also: [Python Plots in RMarkdown](https://stackoverflow.com/questions/50352614/r-markdown-how-can-i-make-rstudio-display-python-plots-inline-instead-of-in-new).
 
-```{python, engine.path="/Users/danielmaxwell/AppData/Local/Programs/Python/Python35/python.exe"}
 
-x = 'Hello, Python World!'
+```{python, results='asis'}
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
 
-print(x.split(' '))
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] =  'c:/ProgramData/Anaconda3/Library/plugins/platforms'
+
+df  = pd.read_csv('c:/informatics/gapminder.csv', index_col = 0)
+
+ax = plt.axes()
+ax.set(xlabel = 'Year', 
+       ylabel = 'Years', 
+         xlim = (1950, 2010), 
+        title = 'Life Expectancy')
+
+#
+# Subset by country and plot.
+#
+
+df_gap = df.loc['United States']
+plt.plot(df_gap[['year']], df_gap[['lifeExp']], color = 'blue')
+plt.show()
 
 ```
-With Python, you need to set the engine.path variable.  RStudio documentation indicates that you can use the Python engine in a code snippet by referencing the interpreter like this: {python}.  However, this only works if python.exe is in the Windows PATH variable, in a location accessible to RStudio.  The path, of course, is unique to each computer.
+
+
