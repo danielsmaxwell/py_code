@@ -1,5 +1,5 @@
-### Python Project Code
+### Python Code
 
 Python education code and examples.
 
-[SQLite / Python Tutorial](http://www.sqlitetutorial.net/sqlite-python/)
+[SQLite/Python Tutorial](http://www.sqlitetutorial.net/sqlite-python/)
