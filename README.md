@@ -2,4 +2,4 @@
 
 Python education code and examples.
 
-[SQLite Tutorial](http://www.sqlitetutorial.net/sqlite-python/)
+[SQLite/Python Tutorial](http://www.sqlitetutorial.net/sqlite-python/)
